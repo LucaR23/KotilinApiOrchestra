@@ -6,10 +6,10 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "calendario")
-data class Calendar (
+class Calendar (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idCalendar:Long,
+    var idCalendar:Long,
     var startDate:LocalDate,
     var endDate:LocalDate,
     @Column(length = 50)

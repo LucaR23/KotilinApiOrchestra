@@ -4,10 +4,10 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "brano")
-data class MusicSheet(
+class MusicSheet(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idMusicSheet:Long,
+    var idMusicSheet:Long,
     @Column(length = 50)
     var title:String,
     var progressiveNumber:Int,

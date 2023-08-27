@@ -6,11 +6,12 @@ import java.time.LocalDate
 
 @Entity
 @Table(name= "evento")
-data class Event (
+
+class Event (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idEvent:Long,
+    var idEvent:Long,
     var eventDate:LocalDate,
     @Column(length = 20)
     var eventHour:String,

@@ -5,10 +5,10 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "musico")
-data class Musician (
+class Musician (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idMusician:Long,
+    var idMusician:Long,
     @ManyToOne
     @JoinColumn(name = "id_role")
     var idRole:Role,

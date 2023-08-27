@@ -4,10 +4,10 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "strumento")
-data class MusicalInstrument (
+class MusicalInstrument (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idInstrument:Long,
+    var idInstrument:Long,
     @Column(length = 30, nullable = false)
     var instrumentName:String,
     @Column(length = 20, nullable = true)

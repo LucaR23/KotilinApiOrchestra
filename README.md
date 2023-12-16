@@ -3,3 +3,6 @@ My first repository for kotlin spring boot API , to build, in the future, a mana
 ![alt text](https://github.com/LucaR23/KotilinApiOrchestra/blob/main/borgone/DB_Schema.jpg)
 
 In picture the Db structure managed by JPA entity and Hibernate
+
+# Swagger UI URL 
+http://localhost:8080/swagger-ui/index.html

@@ -9,5 +9,5 @@ import java.util.Optional
 interface InstrumentRepository : JpaRepository<MusicalInstrument, Long> {
     fun findAllByActive(active:Boolean,page:Pageable) : Page<MusicalInstrument>
 
-    fun findByIdAndActiveTrue(idInstrument:Long) : Optional<MusicalInstrument>
+    fun findByIdInstrumentAndActiveTrue(idInstrument:Long) : Optional<MusicalInstrument>
 }

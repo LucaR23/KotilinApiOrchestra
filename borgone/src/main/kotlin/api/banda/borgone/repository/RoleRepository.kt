@@ -6,6 +6,6 @@ import java.util.Optional
 
 interface RoleRepository : JpaRepository<Role,Long > {
      fun findAllByActive(active:Boolean) : List<Role>
-     fun findByIdAndActiveTrue(iRole:Long) : Optional<Role>
+     fun findByIdRoleAndActiveTrue(iRole:Long) : Optional<Role>
 
 }

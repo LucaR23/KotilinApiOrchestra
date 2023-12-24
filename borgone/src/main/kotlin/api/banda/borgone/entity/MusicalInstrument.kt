@@ -7,7 +7,7 @@ import jakarta.persistence.*
 class MusicalInstrument (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var idInstrument:Long,
+    var idInstrument:Long? = null,
     @Column(length = 30, nullable = false)
     var instrumentName:String,
     @Column(length = 20, nullable = true)

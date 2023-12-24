@@ -1,12 +1,14 @@
 package api.banda.borgone.controller
 
 import api.banda.borgone.dto.response.BasicResponse
+import api.banda.borgone.exception.RoleNotFoundException
 import api.banda.borgone.service.RoleService
 import io.swagger.v3.oas.annotations.Operation
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -33,7 +35,19 @@ class RoleController(private  val service: RoleService) {
     @Operation(summary = "API to remove logically a role from the organization")
     @DeleteMapping("/delete/{idRole}")
     fun deleteRole(@PathVariable  @NotNull @Min(1) idRole:Long)  : ResponseEntity<BasicResponse> {
-        return  service.deleteRole(idRole)
+        try {
+            return service.deleteRole(idRole)
+        }catch (e:RoleNotFoundException) {
+            return ResponseEntity(BasicResponse(message =e.message.toString(), status = false, body = null),HttpStatus.NOT_FOUND)
+        }
+    }
+    @Operation(summary = "API to get a role by is Id")
+    @GetMapping("/get/{idRole}")
+    fun getById(@PathVariable @NotNull @Min(1) idRole: Long) : ResponseEntity<BasicResponse>{
+      try {
+          return service.roleById(idRole);
+      }catch (e:RoleNotFoundException){
+          return ResponseEntity(BasicResponse(message =e.message.toString(), status = false, body = null),HttpStatus.NOT_FOUND)
+      }
     }
 }
-/*TODO  gestione eccezioni , messaggi di risposta*/

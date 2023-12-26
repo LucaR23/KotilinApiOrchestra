@@ -2,15 +2,15 @@ package api.banda.borgone.dto.response
 
 import api.banda.borgone.entity.MusicalInstrument
 
-class InstrumentResponse {
-    private var instrumentId:Long? = null
-    private var instrumentName:String= ""
-    private var instrumentKey:String= ""
+  class InstrumentResponse {
+     var instrumentId:Long?=null
+      var instrumentName:String?=""
+      var instrumentKey:String?=""
 
-    constructor(entity: MusicalInstrument){
-        this.instrumentId=entity.idInstrument
-        this.instrumentKey= entity.instrumentKey
-        this.instrumentName=entity.instrumentName
+     constructor(entity: MusicalInstrument){
+        instrumentId=entity.idInstrument
+        instrumentKey= entity.instrumentKey
+        instrumentName=entity.instrumentName
     }
 
     constructor(instrumentId:Long,instrumentName:String,instrumentKey:String){

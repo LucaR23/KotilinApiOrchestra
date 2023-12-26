@@ -1,7 +1,10 @@
 package api.banda.borgone.entity
 
 import jakarta.persistence.*
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "musico")
@@ -36,6 +39,10 @@ class Musician (
     @JoinTable(
         name = "evento_personale",
         joinColumns =[JoinColumn(name = "id_event")],
-        inverseJoinColumns = [JoinColumn(name = "idMusiciant")])
-    var occurrence:List<Event>
+        inverseJoinColumns = [JoinColumn(name = "idMusician")])
+    var occurrence:List<Event>,
+//    @CreationTimestamp
+//    var insertDate: LocalDateTime,
+//    @UpdateTimestamp
+//    var modificationDate: LocalDateTime
 )

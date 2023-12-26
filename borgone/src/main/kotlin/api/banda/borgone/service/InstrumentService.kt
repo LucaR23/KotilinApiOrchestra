@@ -42,4 +42,11 @@ class InstrumentService(val instrumentRepo:InstrumentRepository) {
         return ResponseEntity(BasicResponse(status = true, message = "Instrument saved successfully", body = null),HttpStatus.OK)
     }
 
+    fun researchInstrument(page:Int,number:Int,param:String) : ResponseEntity<BasicResponse>{
+        val res = instrumentRepo.findByParam(PageRequest.of(page,number),param)
+        val list = ArrayList<InstrumentResponse>()
+        res.stream().forEach { ent-> list.add(InstrumentResponse(ent)) }
+        return ResponseEntity(BasicResponse(status = true, message = "List Found successfully", body = list),HttpStatus.OK)
+    }
+
 }

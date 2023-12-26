@@ -28,7 +28,7 @@ class RoleService (val roleRepo : RoleRepository) {
     }
 
     fun roleById(idRole:Long) : ResponseEntity<BasicResponse>{
-        val res = roleRepo.findByIdAndActiveTrue(idRole).orElseThrow{RoleNotFoundException("Role not Found with id: {}$idRole")}
+        val res = roleRepo.findByIdRoleAndActiveTrue(idRole).orElseThrow{RoleNotFoundException("Role not Found with id: {}$idRole")}
         val list = ArrayList<Role>()
         list.add(res)
         return ResponseEntity(BasicResponse(status = true, message = "Role found successfully", body = list),HttpStatus.OK)

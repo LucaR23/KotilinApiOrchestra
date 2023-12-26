@@ -1,13 +1,16 @@
 package api.banda.borgone.entity
 
 import jakarta.persistence.*
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "brano")
-class MusicSheet(
+class MusicSheet (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var idMusicSheet:Long,
+    var idMusicSheet:Long?=null,
     @Column(length = 50)
     var title:String,
     var progressiveNumber:Int,
@@ -19,5 +22,9 @@ class MusicSheet(
     var note:String,
     var active:Boolean,
     @ManyToMany(mappedBy = "musicSheet")
-    var piece:List<Event>
+    var piece:List<Event>?=null,
+//    @CreationTimestamp
+//    var insertDate: LocalDateTime,
+//    @UpdateTimestamp
+//    var modificationDate: LocalDateTime
 )

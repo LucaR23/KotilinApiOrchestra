@@ -13,8 +13,8 @@ interface InstrumentRepository : JpaRepository<MusicalInstrument, Long> {
     fun findByIdInstrumentAndActiveTrue(idInstrument:Long) : Optional<MusicalInstrument>
 
     @Query(
-        value = "SELECT m FROM  MusicalInstrument m WHERE m.instrumentName LIKE CONCAT('%', :param, '%' )",
-        countQuery ="SELECT COUNT(*) FROM  MusicalInstrument m WHERE m.instrumentName LIKE CONCAT('%', :param, '%' ) ",
+        value = "SELECT m FROM  MusicalInstrument m WHERE m.instrumentName LIKE CONCAT('%', :param, '%' ) AND m.active=true",
+        countQuery ="SELECT COUNT(*) FROM  MusicalInstrument m WHERE m.instrumentName LIKE CONCAT('%', :param, '%' )  AND m.active=true",
     )
     fun findByParam(page: Pageable,param:String) : Page<MusicalInstrument>
 }

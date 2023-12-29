@@ -10,7 +10,6 @@ data class MusicSheetRequest (
   @NotBlank @Size(min=10)
   val description:String,
   val note:String,
-  @NotNull
   val progressiveNumber:Int,
   @NotBlank @Size(min=1)
   val title:String

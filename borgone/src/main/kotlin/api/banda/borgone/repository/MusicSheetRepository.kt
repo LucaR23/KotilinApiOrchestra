@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import java.util.*
 
-interface MusicSheetRepository: JpaRepository<MusicSheet, Long> {
+interface MusicSheetRepository :  JpaRepository<MusicSheet, Long> {
 
     fun findByIdMusicSheetAndActiveTrue(idSheet:Long) : Optional<MusicSheet>
 

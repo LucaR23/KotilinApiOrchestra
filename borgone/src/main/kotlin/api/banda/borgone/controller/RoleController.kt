@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -22,10 +24,14 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("api/role")
 @Validated
 class RoleController(private  val service: RoleService) {
+
+    private val logger: Logger = LoggerFactory.getLogger(RoleController::class.java)
+
     @Operation(summary = "API that create a new Role in the organization")
     @PostMapping("/new")
     fun addRole(@NotBlank @Size(min = 2, max = 30) roleName:String) : ResponseEntity<BasicResponse> {
-      return   service.saveRole(roleName)
+        logger.info("Saving new role {}",roleName)
+      return    service.saveRole(roleName)
     }
      @Operation(summary = "API that return a list of the organization Role")
      @GetMapping("/list")
@@ -38,6 +44,7 @@ class RoleController(private  val service: RoleService) {
         try {
             return service.deleteRole(idRole)
         }catch (e:RoleNotFoundException) {
+            logger.error("Error during deleting Role with ID: {}",idRole)
             return ResponseEntity(BasicResponse(message =e.message.toString(), status = false, body = null),HttpStatus.NOT_FOUND)
         }
     }
@@ -47,6 +54,7 @@ class RoleController(private  val service: RoleService) {
       try {
           return service.roleById(idRole);
       }catch (e:RoleNotFoundException){
+          logger.error("Error during finding Role with ID: {}",idRole)
           return ResponseEntity(BasicResponse(message =e.message.toString(), status = false, body = null),HttpStatus.NOT_FOUND)
       }
     }

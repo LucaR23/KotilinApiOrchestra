@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 class Musician (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var idMusician:Long,
+    var idMusician:Long?=null,
     @ManyToOne
     @JoinColumn(name = "id_role")
     var idRole:Role,
@@ -40,7 +40,7 @@ class Musician (
         name = "evento_personale",
         joinColumns =[JoinColumn(name = "id_event")],
         inverseJoinColumns = [JoinColumn(name = "idMusician")])
-    var occurrence:List<Event>,
+    var occurrence:List<Event>?=null,
 //    @CreationTimestamp
 //    var insertDate: LocalDateTime,
 //    @UpdateTimestamp
